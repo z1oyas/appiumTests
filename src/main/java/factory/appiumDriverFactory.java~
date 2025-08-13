@@ -1,0 +1,45 @@
+package factory;
+
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.remote.AutomationName;
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+public class appiumDriverFactory {
+
+  private static DesiredCapabilities capabilities;
+  private static URL url;
+
+  public appiumDriverFactory() {
+    //{
+    //  "platformName": "Android",
+    //  "appium:automationName": "UiAutomator2",
+    //  "appium:deviceName": "emulator-5554",
+    //  "appium:appPackage": "com.pyankoff.andy",
+    //  "appium:appActivity": ".MainActivity",
+    //  "appium:noReset": true
+    //}
+    capabilities = new DesiredCapabilities();
+    capabilities.setCapability("platformName", Platform.ANDROID);
+    capabilities.setCapability("appium:automationName", AutomationName.ANDROID_UIAUTOMATOR2);
+    capabilities.setCapability("appium:deviceName", System.getProperty("deviceName"));
+    capabilities.setCapability("appium:appPackage", System.getProperty("appPackage"));
+    capabilities.setCapability("appium:appActivity", System.getProperty("appActivity"));
+    capabilities.setCapability("appium:noReset", System.getProperty("noReset"));
+
+    try {
+      url = new URL(System.getProperty("noReset"));
+    }
+    catch (MalformedURLException e){
+      System.out.println("Bad appium server url: \n" + e.getMessage());
+    }
+
+
+  }
+
+  public static AppiumDriver initDriver() {
+    return new AppiumDriver(url, capabilities);
+  }
+}
