@@ -8,8 +8,8 @@ import org.openqa.selenium.By;
 
 public class AllertPopup {
 
-  public SelenideElement popupBody = $(By.xpath("/hierarchy/android.widget.FrameLayout"));
-  public ElementsCollection popupText = popupBody.$$(By.xpath(".//android.widget.TextView"));
-  public SelenideElement okButton = $(By.id("android:id/button1"));
+  public final SelenideElement popupBody = $(By.xpath("/hierarchy/android.widget.FrameLayout"));
+  public final ElementsCollection popupText = popupBody.$$(By.xpath(".//android.widget.TextView"));
+  public final SelenideElement okButton = $(By.id("android:id/button1"));
 
 }

@@ -3,6 +3,7 @@ package modules;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.Singleton;
+import pages.ExercisePage;
 import pages.elements.AllertPopup;
 import pages.StartPage;
 import pages.elements.ChatElement;
@@ -13,6 +14,12 @@ public class AppiumModule extends AbstractModule {
   @Singleton
   public StartPage getStartPage() {
     return new StartPage();
+  }
+
+  @Provides
+  @Singleton
+  public ExercisePage getExercisePage() {
+    return new ExercisePage();
   }
 
 

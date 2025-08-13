@@ -16,6 +16,7 @@
     <guice.version>7.0.0</guice.version>
     <maven-checkstyle-plugin.version>3.6.0</maven-checkstyle-plugin.version>
     <spotbugs-maven-plugin.version>4.9.3.0</spotbugs-maven-plugin.version>
+    <assertj.version>3.27.3</assertj.version>
   </properties>
 
   <dependencies>
@@ -28,6 +29,11 @@
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
       <version>${junit.jupiter.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>${assertj.version}</version>
     </dependency>
     <dependency>
       <groupId>com.codeborne</groupId>
@@ -78,7 +84,7 @@
           <base.url>http://127.0.0.1:4723/wd/hub</base.url>
           <appPackage>com.pyankoff.andy</appPackage>
           <appActivity>.MainActivity</appActivity>
-          <noReset>true</noReset>
+          <noReset>false</noReset>
         </systemPropertyVariables>
         <useModulePath>false</useModulePath>
       </configuration>

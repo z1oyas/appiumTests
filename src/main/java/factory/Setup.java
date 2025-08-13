@@ -9,6 +9,7 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Paths;
 
 public class Setup {
   private static DesiredCapabilities capabilities;
@@ -22,6 +23,9 @@ public class Setup {
     capabilities.setCapability("appium:appPackage", System.getProperty("appPackage"));
     capabilities.setCapability("appium:appActivity", System.getProperty("appActivity"));
     capabilities.setCapability("appium:noReset", System.getProperty("noReset"));
+    String appPath = Paths.get("src/test/resources/app/Andy-257946-a51d3d.apk")
+                         .toAbsolutePath().toString();
+    capabilities.setCapability("app", appPath);
 
     URL appiumServerUrl = null;
     try {
