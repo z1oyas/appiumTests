@@ -53,7 +53,7 @@ public class AndroidTest {
   }
 
   @Test()
-  @DisplayName("Проверка отображения и кликабельности  вкладок главной страницы")
+  @DisplayName("Проверка отображения вкладок главной страницы")
   public void testMainPage() {
     // переход на главную страницу при холодном старте
     startPage.skipStartPage();
