@@ -18,6 +18,7 @@ timeout(1200){
                    sh "echo 'APP_PACKAGE=${yamlConfig['appPackage']}' >> .env"
                    sh "echo 'APP_ACTIVITY=${yamlConfig['appActivity']}' >> .env"
                    sh "echo 'NO_RESET=${yamlConfig['noReset']}' >> .env"
+                   sh "echo 'APP_URL=${yamlConfig['appUrl']}' >> .env"
                 }
             }
             stage("Prepare Allure results") {
