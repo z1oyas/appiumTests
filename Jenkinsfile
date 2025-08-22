@@ -84,7 +84,7 @@ timeout(1200){
         }
         finally {
             stage("Cleanup") {
-                sh "docker rm -f ui_tests"
+                sh "docker rm -f mobile_tests"
             }
         }
     }
