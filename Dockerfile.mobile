@@ -17,4 +17,5 @@ ENTRYPOINT ["sh", "-c", "\
   -DappPackage=${APP_PACKAGE} \
   -DappActivity=${APP_ACTIVITY} \
   -DnoReset=${NO_RESET} \
+  -DappUrl=${APP_URL} \
   -Dallure.results.directory=${ALLURE_RESULTS}"]

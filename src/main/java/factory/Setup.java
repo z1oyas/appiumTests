@@ -23,9 +23,8 @@ public class Setup {
     capabilities.setCapability("appium:appPackage", System.getProperty("appPackage", "com.pyankoff.andy"));
     capabilities.setCapability("appium:appActivity", System.getProperty("appActivity", ".MainActivity"));
     capabilities.setCapability("appium:noReset", System.getProperty("noReset", "false"));
-    String appPath = Paths.get("src/test/resources/app/Andy-257946-a51d3d.apk")
-                         .toAbsolutePath().toString();
-    capabilities.setCapability("app", appPath);
+    String appUrl = System.getProperty("appUrl", "http://localhost:8888/Andy-257946-a51d3d.apk");
+    capabilities.setCapability("app", appUrl);
 
     URL appiumServerUrl = null;
     try {

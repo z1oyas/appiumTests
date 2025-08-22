@@ -126,6 +126,8 @@
             <appActivity>${appActivity}</appActivity>
             <!--suppress UnresolvedMavenProperty -->
             <noReset>${noReset}</noReset>
+            <!--suppress UnresolvedMavenProperty -->
+            <appUrl>${appUrl}</appUrl>
             <allure.results.directory>${project.basedir}/allure-results</allure.results.directory>
           </systemPropertyVariables>
           <useModulePath>false</useModulePath>
