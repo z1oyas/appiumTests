@@ -29,6 +29,7 @@ timeout(1200){
                         script: "docker run --rm --name=mobile_tests --env-file envs/.env --network=host -v \$PWD/allure-results:/app/allure-results localhost:5005/mobile_tests:latest",
                         returnStatus: true
                 )
+                sh "ls -ls \$PWD/allure-results"
                 if (status > 0) {
                     currentBuild.result = 'UNSTABLE'
                 }
