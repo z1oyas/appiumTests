@@ -1,0 +1,20 @@
+FROM maven:3.9.8-eclipse-temurin-17
+
+WORKDIR /app
+
+COPY pom.xml ./
+RUN mvn dependency:go-offline
+COPY src ./src
+
+VOLUME ["/app/allure-results"]
+
+ENV ALLURE_RESULTS=/app/allure-results
+
+ENTRYPOINT ["sh", "-c", "\
+  mvn clean test \
+  -Dbase_url=${BASE_URL} \
+  -DdeviceName=${DEVICE_NAME} \
+  -DappPackage=${APP_PACKAGE} \
+  -DappActivity=${APP_ACTIVITY} \
+  -DnoReset=${NO_RESET} \
+  -Dallure.results.directory=${ALLURE_RESULTS}"]

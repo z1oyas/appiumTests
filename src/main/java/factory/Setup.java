@@ -19,17 +19,17 @@ public class Setup {
     capabilities = new DesiredCapabilities();
     capabilities.setCapability("platformName", Platform.ANDROID);
     capabilities.setCapability("appium:automationName", AutomationName.ANDROID_UIAUTOMATOR2);
-    capabilities.setCapability("appium:deviceName", System.getProperty("deviceName"));
-    capabilities.setCapability("appium:appPackage", System.getProperty("appPackage"));
-    capabilities.setCapability("appium:appActivity", System.getProperty("appActivity"));
-    capabilities.setCapability("appium:noReset", System.getProperty("noReset"));
+    capabilities.setCapability("appium:deviceName", System.getProperty("deviceName", "emulator-5554"));
+    capabilities.setCapability("appium:appPackage", System.getProperty("appPackage", "com.pyankoff.andy"));
+    capabilities.setCapability("appium:appActivity", System.getProperty("appActivity", ".MainActivity"));
+    capabilities.setCapability("appium:noReset", System.getProperty("noReset", "false"));
     String appPath = Paths.get("src/test/resources/app/Andy-257946-a51d3d.apk")
                          .toAbsolutePath().toString();
     capabilities.setCapability("app", appPath);
 
     URL appiumServerUrl = null;
     try {
-      appiumServerUrl = new URL(System.getProperty("base.url"));
+      appiumServerUrl = new URL(System.getProperty("base_url","http://127.0.0.1:4723/wd/hub"));
     }catch (MalformedURLException e){
       System.out.println("Bad appium server url: \n" + e.getMessage());
     }
