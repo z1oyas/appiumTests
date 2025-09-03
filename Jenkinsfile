@@ -1,4 +1,7 @@
 import groovy.json.JsonSlurperClassic
+import java.util.Date
+import java.text.SimpleDateFormat
+
 
 def slurped = [:]
 
@@ -57,7 +60,20 @@ timeout(1200){
             }
 
             stage("Telegram notification") {
-                def messageContent = """====MOBILE TESTS RESULT =====
+            def dateUnixStart = slurped.time.start as long
+            def dateUnixStop = slurped.time.stop as long
+
+
+            def duration = ((slurped.time.duration as long) / 1000) as long
+            Date dateObjStart = new Date(dateUnixStart)
+            Date dateObjStop = new Date(dateUnixStop)
+
+            def cleanDateStart = new SimpleDateFormat('yyyy-MM-dd HH:mm:ss').format(dateObjStart)
+            def cleanDateStop = new SimpleDateFormat('yyyy-MM-dd HH:mm:ss').format(dateObjStop)
+            //
+            def durationMin = (duration /60) as long
+            def durationSec = (duration %60) as long
+            def messageContent = """====MOBILE TESTS RESULT =====
 
                 Test Results:
                 Passed: ${slurped.statistic.passed}
@@ -65,7 +81,10 @@ timeout(1200){
                 Broken: ${slurped.statistic.broken}
                 Skipped: ${slurped.statistic.skipped}
                 Total: ${slurped.statistic.total}
-                Duration: ${slurped.time.duration}"""
+
+                Start: $cleanDateStart
+                Finish: $cleanDateStop
+                Duration: $durationMin min $durationSec sec"""
 
 
 
