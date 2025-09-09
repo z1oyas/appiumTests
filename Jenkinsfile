@@ -108,6 +108,9 @@ timeout(1200){
                     """
                 }
             }
+            stage("Archive allure results") {
+                archiveArtifacts artifacts: 'allure-results/**', allowEmptyArchive: true
+            }
         }
         finally {
             stage("Cleanup") {
